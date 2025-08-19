@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Events Section -->
+<section class="py-20 px-6 max-w-7xl mx-auto">
+  <h2 class="text-4xl font-bold text-orange-500 mb-10 text-center">Upcoming Events</h2>
+  <div class="grid md:grid-cols-2 gap-10">
+    {% for event in events%}
+    <!-- Event Card -->
+    <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <!-- Image container -->
+      <div class="w-full h-60 overflow-hidden object-cover">
+        <img src="{{ event.featured_image.url }}" alt="{{ event.event_name }}" class="w-full h-full object-cover">
+      </div>
+      <!-- Content -->
+      <div class="p-6">
+        <h3 class="text-2xl font-semibold mb-2 text-white">
+          {{ event.event_name }}
+        </h3>
+        <p class="text-gray-400 text-sm mb-4">
+          {{ event.event_description }}
+        </p>
+        <a href="{% url 'event' event.id %}" class="font-semibold hover:text-orange-600 text-white py-2">
+          View Details...
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</section>
+{% endblock content %}

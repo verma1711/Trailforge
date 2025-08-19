@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auth Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="relative h-screen w-screen overflow-hidden">
+
+  <!-- Background Video
+  <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+    <source src="https://drive.google.com/uc?export=download&id=1NBt_1-yuJk5_v1tjmgSHU-1E1-fVBVv5" type="video/mp4">
+  </video> -->
+
+    <!-- Background Video Youtube-->
+  <div class="absolute inset-0 w-full h-full overflow-hidden">
+    <iframe
+      src="https://www.youtube.com/embed/ACC7N7vH9gg?si=gwp09-bc7jDqI23J"
+      frameborder="0"
+      allow="autoplay; fullscreen"> 
+    </iframe>
+    <div class="absolute inset-0 bg-black/70"></div>
+  </div>
+ 
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black/80"></div>
+
+  <!-- Center Box -->
+  <div class="relative z-10 flex items-center justify-center h-full">
+    <div class="w-full max-w-md bg-black/90 border border-orange-500 rounded-xl shadow-lg p-6">
+
+      <div class="flex justify-center mb-6">
+        <img src="{% static 'images/logo.png' %}" alt="TrailForge Logo" class="h-20 w-auto" />
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex mb-6 border-b border-gray-700">
+        <button id="loginTab" class="flex-1 py-2 text-center font-semibold text-orange-500 border-b-2 border-orange-500">Login</button>
+        <button id="signupTab" class="flex-1 py-2 text-center font-semibold text-gray-400 hover:text-orange-400 border-b-2 border-transparent">Signup</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-sm mb-1 text-gray-300">Username</label>
+          <input type="text" class="w-full px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-orange-500">
+        </div>
+        <div>
+          <label class="block text-sm mb-1 text-gray-300">Password</label>
+          <input type="password" class="w-full px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-orange-500">
+        </div>
+        <button class="w-full bg-orange-500 hover:bg-orange-600 text-black font-semibold py-2 rounded">Login</button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signupForm" class="space-y-4 hidden">
+        <div>
+          <label class="block text-sm mb-1 text-gray-300">Username</label>
+          <input type="text" class="w-full px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-orange-500">
+        </div>
+        <div>
+          <label class="block text-sm mb-1 text-gray-300">Email</label>
+          <input type="email" class="w-full px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-orange-500">
+        </div>
+        <div>
+          <label class="block text-sm mb-1 text-gray-300">Password</label>
+          <input type="password" class="w-full px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-orange-500">
+        </div>
+        <div>
+          <label class="block text-sm mb-1 text-gray-300">Confirm Password</label>
+          <input type="password" class="w-full px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:border-orange-500">
+        </div>
+        <button class="w-full bg-orange-500 hover:bg-orange-600 text-black font-semibold py-2 rounded">Signup</button>
+      </form>
+
+    </div>
+  </div>
+
+  <script>
+    const loginTab = document.getElementById("loginTab")
+    const signupTab = document.getElementById("signupTab")
+    const loginForm = document.getElementById("loginForm")
+    const signupForm = document.getElementById("signupForm")
+
+    loginTab.onclick = () => {
+      loginForm.classList.remove("hidden")
+      signupForm.classList.add("hidden")
+      loginTab.classList.add("text-orange-500","border-orange-500")
+      loginTab.classList.remove("text-gray-400","border-transparent")
+      signupTab.classList.add("text-gray-400","border-transparent")
+      signupTab.classList.remove("text-orange-500","border-orange-500")
+    }
+
+    signupTab.onclick = () => {
+      signupForm.classList.remove("hidden")
+      loginForm.classList.add("hidden")
+      signupTab.classList.add("text-orange-500","border-orange-500")
+      signupTab.classList.remove("text-gray-400","border-transparent")
+      loginTab.classList.add("text-gray-400","border-transparent")
+      loginTab.classList.remove("text-orange-500","border-orange-500")
+    }
+  </script>
+
+</body>
+</html>

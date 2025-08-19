@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="max-w-6xl mx-auto px-4 mt-[80px]">
+  <!-- Event banner -->
+  <div class="rounded-2xl overflow-hidden bg-card">
+    <img src="{{events.featured_image.url}}" class="w-full h-64 object-cover" alt="Event banner" />
+    <div class="p-6 bg-gray-800">
+      <h1 class="text-3xl font-bold">{{events.event_name}}</h1>
+      <p class="text-gray-400 mt-2">{% if events.event_state %}{{events.event_city}}, {{events.event_state}} {%endif%}</p>
+      <p class="mt-4 text-gray-300">{{events.event_short_intro}}</p>
+      <p class="mt-4 text-gray-300 font-semibold">Entry fee: {{events.event_charges}}</p>
+      <div class="mt-6">
+        <a href="checkout.html"
+          class="inline-block bg-emerald-500 hover:bg-emerald-600 text-gray-900 font-semibold px-5 py-2 rounded-lg">Join</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event details -->
+  <section class="mt-10">
+    <h2 class="text-2xl font-semibold mb-4">What to expect</h2>
+    <p class="text-gray-300">{{events.event_description}}</p>
+  </section>
+
+  <!-- FAQ (simple list) -->
+  <section class="mt-8">
+    <h2 class="text-2xl font-semibold mb-4">FAQs</h2>
+    <ul class="space-y-4 text-gray-300 list-disc ml-5">
+      <li><strong>Is safety gear mandatory?</strong> Helmets and protective riding gear are mandatory for all
+        participants.</li>
+      <li><strong>What if it rains heavily?</strong> The rally will proceed unless conditions become unsafe. We will
+        notify participants if there are changes.</li>
+    </ul>
+  </section>
+
+  <!-- Map placeholder and address -->
+  <section class="mt-10 mb-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <h2 class="text-2xl font-semibold mb-4 pt-[40px]">Location</h2>
+      <p class="text-gray-300">{{events.event_name}}<br>{% if events.event_state %}{{events.event_locality}}, {{events.event_city}}, {{events.event_state}} {%endif%}</p>
+      <p class="text-gray-400 mt-2">The rally takes place on private tracks just outside Pune. Directions will be
+        emailed after registration.</p>
+    </div>
+    <div>
+      <div class="w-full h-64 bg-gray-700 rounded-xl overflow-hidden">
+        <iframe src="{{events.event_location}}" class="w-full h-full" style="border:0;"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+</main>
+{% endblock content %}

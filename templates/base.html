@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrailForge | Offroad Adventures</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-white font-sans">
+  <!-- Navbar -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+  <div class="container mx-auto flex justify-between items-center px-4 py-3">
+    <!-- Logo (adjust height here, container stays fixed) -->
+    <div class="h-12 overflow-hidden flex items-center">
+      <img src="{% static 'images/logo.png' %}" alt="TrailForge Logo" class="h-20 object-contain" />
+    </div>
+    <nav class="space-x-6 text-white font-medium">
+      <a href="{% url 'homepage' %}" class="hover:text-orange-400">Home</a>
+      <a href="{% url 'tracks' %}" class="hover:text-orange-400">Tracks</a>
+      <a href="{% url 'events' %}" class="hover:text-orange-400">Events</a>
+      <a href="{% url 'dashboard' %}" class="hover:text-orange-400">Dashboard</a>
+      <button class="bg-orange-500 text-black px-4 py-2 rounded hover:bg-orange-600"><a href="{% url 'registar' %}">Join the Cult</a></button>
+    </nav>
+  </div>
+</header>
+{% block content %}
+{% endblock %}
+<footer class="bg-gray-800 py-6 text-center text-sm text-gray-400">
+  &copy; 2025 TrailForge. All rights reserved.  
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

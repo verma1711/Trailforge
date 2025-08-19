@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="max-w-7xl mx-auto px-4 py-8">
+    <section class="mb-8">
+      <div class="flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-orange-500">Welcome back, <span id="greetingName">Alex</span>!</h1>
+          <p class="text-gray-400 mt-1">Here’s a quick look at your offroad life.</p>
+        </div>
+        <button class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded text-sm font-semibold">New Booking</button>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 shadow">
+          <p class="text-gray-400 text-xs uppercase tracking-wider">Upcoming</p>
+          <p class="text-3xl font-bold mt-1">2</p>
+          <p class="text-gray-400 text-xs mt-2">track bookings</p>
+        </div>
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 shadow">
+          <p class="text-gray-400 text-xs uppercase tracking-wider">Events</p>
+          <p class="text-3xl font-bold mt-1">1</p>
+          <p class="text-gray-400 text-xs mt-2">registrations</p>
+        </div>
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 shadow">
+          <p class="text-gray-400 text-xs uppercase tracking-wider">Hours Driven</p>
+          <p class="text-3xl font-bold mt-1">24h</p>
+          <p class="text-gray-400 text-xs mt-2">lifetime</p>
+        </div>
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 shadow">
+          <p class="text-gray-400 text-xs uppercase tracking-wider">Payments</p>
+          <p class="text-3xl font-bold mt-1">₹ 12,400</p>
+          <p class="text-gray-400 text-xs mt-2">total spent</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 space-y-6">
+        <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-800 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Upcoming Bookings</h2>
+            <a href="#" class="text-sm text-orange-400 hover:underline">View all</a>
+          </div>
+          <ul class="divide-y divide-gray-800">
+            <li class="px-6 py-4 flex items-center justify-between">
+              <div>
+                <p class="font-semibold">Dust Valley — Morning Slot</p>
+                <p class="text-gray-400 text-sm">Mon, 18 Aug 2025 • 08:00–12:00</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-green-400 text-xs bg-green-400/10 px-2 py-1 rounded">Paid</span>
+                <button class="text-sm bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded">Details</button>
+              </div>
+            </li>
+            <li class="px-6 py-4 flex items-center justify-between">
+              <div>
+                <p class="font-semibold">Mud Cross — Afternoon Slot</p>
+                <p class="text-gray-400 text-sm">Mon, 25 Aug 2025 • 14:00–18:00</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-yellow-300 text-xs bg-yellow-300/10 px-2 py-1 rounded">Pending</span>
+                <button class="text-sm bg-orange-500 hover:bg-orange-600 px-3 py-1 rounded">Pay</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-800 flex items-center justify-between flex-wrap gap-3">
+            <h2 class="text-lg font-semibold">Booking History</h2>
+            <div class="flex items-center gap-2">
+              <input type="text" placeholder="Search…" class="bg-gray-800 rounded px-3 py-2 text-sm"/>
+              <select class="bg-gray-800 rounded px-3 py-2 text-sm">
+                <option>All statuses</option>
+                <option>Paid</option>
+                <option>Pending</option>
+                <option>Cancelled</option>
+              </select>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead class="bg-gray-800 text-gray-300">
+                <tr>
+                  <th class="text-left px-6 py-3 font-medium">Date</th>
+                  <th class="text-left px-6 py-3 font-medium">Track</th>
+                  <th class="text-left px-6 py-3 font-medium">Slot</th>
+                  <th class="text-left px-6 py-3 font-medium">Amount</th>
+                  <th class="text-left px-6 py-3 font-medium">Status</th>
+                  <th class="px-6 py-3"></th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-800">
+                <tr>
+                  <td class="px-6 py-3">12 Jul 2025</td>
+                  <td class="px-6 py-3">Mountain Roar</td>
+                  <td class="px-6 py-3">14:00–18:00</td>
+                  <td class="px-6 py-3">₹ 2,000</td>
+                  <td class="px-6 py-3"><span class="text-green-400 bg-green-400/10 px-2 py-1 rounded text-xs">Paid</span></td>
+                  <td class="px-6 py-3"><button class="text-xs bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded">Invoice</button></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-3">29 Jun 2025</td>
+                  <td class="px-6 py-3">Dust Valley</td>
+                  <td class="px-6 py-3">08:00–12:00</td>
+                  <td class="px-6 py-3">₹ 1,800</td>
+                  <td class="px-6 py-3"><span class="text-red-400 bg-red-400/10 px-2 py-1 rounded text-xs">Cancelled</span></td>
+                  <td class="px-6 py-3"><button class="text-xs bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded">Details</button></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-3">05 Jun 2025</td>
+                  <td class="px-6 py-3">Mud Cross</td>
+                  <td class="px-6 py-3">14:00–18:00</td>
+                  <td class="px-6 py-3">₹ 1,600</td>
+                  <td class="px-6 py-3"><span class="text-yellow-300 bg-yellow-300/10 px-2 py-1 rounded text-xs">Pending</span></td>
+                  <td class="px-6 py-3"><button class="text-xs bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded">Pay</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-800 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Event Registrations</h2>
+            <a href="#" class="text-sm text-orange-400 hover:underline">Browse events</a>
+          </div>
+          <ul class="divide-y divide-gray-800">
+            <li class="px-6 py-4">
+              <p class="font-semibold">Night Fury Rally</p>
+              <p class="text-gray-400 text-sm">15 Oct 2025 • Pune • <span class="text-green-400">Paid</span></p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-800">
+            <h2 class="text-lg font-semibold">Profile</h2>
+          </div>
+          <div class="p-6 space-y-4">
+            <div class="flex items-center gap-4">
+              <img id="profileAvatar" class="h-12 w-12 rounded-full object-cover bg-gray-700" alt="Avatar" src=""/>
+              <div>
+                <p class="font-semibold"><span id="profileName">Alex Driver</span> <span class="text-gray-500 text-xs">(alex)</span></p>
+                <p class="text-gray-400 text-sm">alex@example.com</p>
+              </div>
+            </div>
+            <button id="editProfileBtn" class="w-full bg-gray-800 hover:bg-gray-700 rounded py-2 text-sm">Edit Profile</button>
+            <button id="forgotPwdBtn" class="w-full bg-gray-800 hover:bg-gray-700 rounded py-2 text-sm">Forgot Password</button>
+            <button class="w-full bg-red-600 hover:bg-red-700 rounded py-2 text-sm">Logout</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <!-- ---------------------------------------------------Edit and forgot password---------------------------------------------- -->
+   <div id="editProfileModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center">
+    <div class="bg-gray-900 w-full max-w-md rounded-xl p-6 relative border border-gray-800">
+      <button data-close="editProfileModal" class="absolute top-3 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+      <h3 class="text-xl font-semibold mb-4 text-orange-400">Edit Profile</h3>
+      <div class="items-center mb-4">
+        <img id="editPreviewAvatar" class="h-20 w-20 rounded-full object-cover bg-gray-800" alt="Preview" src=""/>
+      </div>
+      <form class="space-y-4" onsubmit="event.preventDefault(); applyProfileChanges();">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-gray-300 mb-1">Full Name</label>
+            <input id="inputFullName" type="text" placeholder="Your name" class="w-full bg-gray-800 rounded px-3 py-2" value="Alex Driver">
+          </div>
+          <div>
+            <label class="block text-sm text-gray-300 mb-1">Username</label>
+            <input id="inputUsername" type="text" placeholder="alex" class="w-full bg-gray-800 rounded px-3 py-2" value="alex">
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Email</label>
+          <input id="inputEmail" type="email" placeholder="you@example.com" class="w-full bg-gray-800 rounded px-3 py-2" value="alex@example.com">
+        </div>
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Phone</label>
+          <input id="inputPhone" type="text" placeholder="+91 90000 00000" class="w-full bg-gray-800 rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm text-gray-300 mb-2">Profile Photo</label>
+          <input id="inputAvatar" type="file" accept="image/*" class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-800 file:text-gray-200 hover:file:bg-gray-700"/>
+          <p class="text-xs text-gray-500 mt-2">PNG/JPG up to ~5MB recommended.</p>
+        </div>
+        <div class="flex gap-3 pt-2">
+          <button type="button" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded" data-close="editProfileModal">Cancel</button>
+          <button type="submit" class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded text-white">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="forgotPwdModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center">
+    <div class="bg-gray-900 w-full max-w-md rounded-xl p-6 relative border border-gray-800">
+      <button data-close="forgotPwdModal" class="absolute top-3 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+      <h3 class="text-xl font-semibold mb-4 text-orange-400">Forgot Password</h3>
+      <p class="text-sm text-gray-400 mb-4">Enter your email and we’ll send you a reset link.</p>
+      <form class="space-y-4" onsubmit="event.preventDefault(); alert('Reset link sent!'); closeModal('forgotPwdModal');">
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Email</label>
+          <input type="email" placeholder="you@example.com" class="w-full bg-gray-800 rounded px-3 py-2">
+        </div>
+        <div class="flex gap-3 pt-2">
+          <button type="button" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded" data-close="forgotPwdModal">Cancel</button>
+          <button type="submit" class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded text-white">Send Reset Link</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock content %}
