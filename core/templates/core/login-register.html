@@ -8,21 +8,11 @@
 </head>
 <body class="relative h-screen w-screen overflow-hidden">
 
-  <!-- Background Video
+  <!-- Background Video -->
   <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
-    <source src="https://drive.google.com/uc?export=download&id=1NBt_1-yuJk5_v1tjmgSHU-1E1-fVBVv5" type="video/mp4">
-  </video> -->
+    <source src="{% static 'videos/video.mp4'%}" type="video/mp4">
+  </video>
 
-    <!-- Background Video Youtube-->
-  <div class="absolute inset-0 w-full h-full overflow-hidden">
-    <iframe
-      src="https://www.youtube.com/embed/ACC7N7vH9gg?si=gwp09-bc7jDqI23J"
-      frameborder="0"
-      allow="autoplay; fullscreen"> 
-    </iframe>
-    <div class="absolute inset-0 bg-black/70"></div>
-  </div>
- 
   <!-- Dark Overlay -->
   <div class="absolute inset-0 bg-black/80"></div>
 
