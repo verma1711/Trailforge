@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class usermodel(models.Model):
-    featured_image = models.ImageField(default='noimage.svg')
+    featured_image = models.ImageField(default='noprofile.webp')
     user_name = models.CharField(max_length=200)
     password = models.CharField(max_length=200, null=True)
     first_name = models.CharField(max_length=200, null=True)

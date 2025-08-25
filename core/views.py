@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from .modelform import userform
 
@@ -30,11 +30,23 @@ def eventpage(request,pk):
     return render(request, 'core/event.html', context)
 
 def registrationpage(request):
-    # if request.method == 'POST':
-    #     first = request.POST['first']
-    #     last = request.POST['last']
-    #     username = request.POST['username']
-    #     email = request.POST['mail']
-    #     password = request.POST['password']
+    page='register'
+    if request.method == 'POST':
+        form = userform(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            password = form.cleaned_data['password']
+            user.set_password(password)
+            user.save()
+            return redirect('login')
+        else:
+            print("Form errors:", form.errors)
+    else:
+        form = userform()
+    context = {'form':form, 'page':page}
+    return render(request, 'core/login-register.html', context)
 
-    return render(request, 'core/login-register.html')
+def loginpage(request):
+    page='login'
+    context = {'page':page}
+    return render(request, 'core/login-register.html', context)
