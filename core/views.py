@@ -35,9 +35,8 @@ def registrationpage(request):
         form = userform(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            password = form.cleaned_data['password']
-            user.set_password(password)
-            user.save()
+            user.user_name = user.user_name.lower
+            # user.save()
             return redirect('login')
         else:
             print("Form errors:", form.errors)
