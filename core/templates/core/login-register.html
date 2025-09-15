@@ -29,20 +29,11 @@
           <div>
             <label class="block text-sm mb-1 text-gray-300">{{ field.label }}</label>
             {{ field }}
-            {% if field.errors %}
-              {% for error in field.errors %}
-                <p class="text-red-500 text-sm mt-1">{{ error }}</p>
-              {% endfor %}
-            {% endif %}
-          </div>
-        {% endfor %}
-        {% if form.non_field_errors %}
-          <div class="text-red-500 text-sm mt-2">
-            {% for error in form.non_field_errors %}
-              <p>{{ error }}</p>
+            {% for error in field.errors %}
+            <p class="text-xs text-red-500 mt-1">{{ error }}</p>
             {% endfor %}
           </div>
-        {% endif %}
+        {% endfor %}
         <h1 class="text-orange-600 my-2">
           Already have an account?
           <a href="{% url 'login' %}" class="underline hover:text-orange-400">Login</a>
@@ -64,17 +55,18 @@
       </div>
       <form id="loginForm" method="POST" class="space-y-4">
         {% csrf_token %}
-        {% if form.errors %}
+        {% if messages %}
+          {% for message in messages %}
+          {% if message.tags == 'error' %}
           <div class="text-red-500 text-sm mb-2">
-            {% for field, errors in form.errors.items %}
-              {% for error in errors %}
-                <p>{{ error }}</p>
-              {% endfor %}
-            {% endfor %}
-            {% for error in form.non_field_errors %}
-              <p>{{ error }}</p>
-            {% endfor %}
+            {{message}}
           </div>
+          {% elif message.tags == 'success' %}
+          <div class="text-green-500 text-sm mb-2">
+            {{message}}
+          </div>
+          {% endif %}
+          {% endfor %}
         {% endif %}
         <div>
           <label class="block text-sm mb-1 text-gray-300">Username</label>
@@ -88,7 +80,7 @@
         </div>
         <h1 class="text-orange-600 my-2">
           Don’t have an account?
-          <a href="{% url 'registar' %}" class="underline hover:text-orange-400">Register</a>
+          <a href="{% url 'register' %}" class="underline hover:text-orange-400">Register</a>
         </h1>
         <button type="submit"
           class="w-full bg-orange-500 hover:bg-orange-600 text-black font-semibold py-2 rounded">

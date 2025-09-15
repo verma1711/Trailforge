@@ -1,12 +1,19 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .modelform import userform
+from .modelform import CustomUserCreationForm
+from django.contrib import messages
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def homepage(request):
-    form = userform()
-    context = {'form':form}
+    context = {}
     return render(request, 'core/homepage.html', context)
+
+def checkoutPage(request, pk):
+    event = eventModel.objects.get(id=pk)
+    context = {'events':event}
+    return render(request, 'core/checkout.html', context)
 
 def trackspage(request):
     track = trackModel.objects.all()
@@ -30,22 +37,40 @@ def eventpage(request,pk):
     return render(request, 'core/event.html', context)
 
 def registrationpage(request):
-    page='register'
+    page = 'register'
     if request.method == 'POST':
-        form = userform(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.user_name = user.user_name.lower
-            # user.save()
+            form.save()
+            messages.success(request, "Account Created Successfully. Please login now.")
             return redirect('login')
-        else:
-            print("Form errors:", form.errors)
     else:
-        form = userform()
-    context = {'form':form, 'page':page}
+        form = CustomUserCreationForm()
+
+    context = {'form': form, 'page':page}
     return render(request, 'core/login-register.html', context)
 
-def loginpage(request):
-    page='login'
-    context = {'page':page}
-    return render(request, 'core/login-register.html', context)
+def UserLogin(request):
+    if request.user.is_authenticated:
+        previous_page = request.META.get('HTTP_REFERER', '/')
+        return redirect(previous_page)
+    else:
+        page = 'login'
+        context = {'page':page}
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password']
+        
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('homepage')
+            else:
+                messages.error(request, 'Username or Passward does not exist or matched')
+        return render(request, 'core/login-register.html', context)
+
+def UserLogout(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect('login')

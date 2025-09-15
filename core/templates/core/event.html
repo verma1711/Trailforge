@@ -11,7 +11,7 @@
       <p class="mt-4 text-gray-300">{{events.event_short_intro}}</p>
       <p class="mt-4 text-gray-300 font-semibold">Entry fee: {{events.event_charges}}</p>
       <div class="mt-6">
-        <a href="checkout.html"
+        <a href="{% url 'checkout' events.id %}"
           class="inline-block bg-emerald-500 hover:bg-emerald-600 text-gray-900 font-semibold px-5 py-2 rounded-lg">Join</a>
       </div>
     </div>

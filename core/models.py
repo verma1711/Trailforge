@@ -34,7 +34,7 @@ class bookingModel(models.Model):
     ('2', '12:00 - 15:00'),
     ('3', '15:00 - 18:00'),
     ]
-    booking_user = models.ForeignKey(usermodel, on_delete=models.PROTECT)
+    booking_user = models.ForeignKey(usermodel, on_delete=models.CASCADE)
     booking_date = models.DateField()
     booking_track = models.ForeignKey(trackModel, on_delete=models.PROTECT)
     booking_time = models.CharField(max_length=1, choices=time, null=True)
@@ -50,7 +50,7 @@ class bookingModel(models.Model):
         ]
 
     def __str__(self):
-        return self.booking_user.user_name
+        return self.booking_user.username
     
 class eventModel(models.Model):
     featured_image = models.ImageField(default='noimage.svg', upload_to="eventposters/", null=True, blank=True)
